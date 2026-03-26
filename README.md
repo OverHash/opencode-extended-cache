@@ -6,6 +6,7 @@ An OpenCode plugin that adds `"service_tier": "priority"` to Codex requests when
 
 - Adds a `/fast` command to OpenCode
 - When enabled, injects `service_tier: "priority"` into requests sent to `https://chatgpt.com/backend-api/codex/responses`
+- Mirrors Codex Fast mode, which is documented as 1.5x faster at 2x credit cost
 - Leaves all non-Codex requests untouched
 - Persists a single global `enabled` flag in `~/.config/opencode/opencodex-fast.jsonc`
 
@@ -20,16 +21,11 @@ An OpenCode plugin that adds `"service_tier": "priority"` to Codex requests when
 
 ## Installation
 
-```bash
-cd ~/.config/opencode/plugin/opencodex-fast
-npm install
-npm run build
-```
+Add to your OpenCode config:
 
-Then add it to `~/.config/opencode/opencode.jsonc`:
-
-```json
+```jsonc
+// opencode.jsonc
 {
-  "plugin": ["./plugin/opencodex-fast"]
+  "plugin": ["opencodex-fast@latest"],
 }
 ```
