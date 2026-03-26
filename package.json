@@ -1,0 +1,21 @@
+{
+  "name": "opencodex-fast",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "OpenCode plugin that adds Codex priority service tier behind /fast",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc",
+    "dev": "opencode plugin dev"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": ">=0.13.7"
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "^1.1.49",
+    "@types/node": "^25.1.0",
+    "typescript": "^5.9.3"
+  }
+}
