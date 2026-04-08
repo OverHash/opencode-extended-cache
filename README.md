@@ -32,11 +32,31 @@ An OpenCode plugin that sets `promptCacheRetention: "24h"` through `chat.params`
 
 ## Installation
 
-Add to your OpenCode config:
+This plugin is not published to npm.
+
+Build it locally:
+
+```bash
+git clone git@github.com:OverHash/opencode-extended-cache.git
+cd opencode-extended-cache
+npm install
+npm run build
+```
+
+Option A (recommended): install via global plugin directory.
+
+```bash
+cp dist/index.js ~/.config/opencode/plugins/opencode-extended-cache.js
+cp dist/index.js.map ~/.config/opencode/plugins/opencode-extended-cache.js.map
+```
+
+Restart OpenCode. No config change is required for this option.
+
+Option B: load it from a file path in `opencode.json`.
 
 ```jsonc
-// opencode.jsonc
+// ~/.config/opencode/opencode.json
 {
-  "plugin": ["opencode-extended-cache@latest"],
+  "plugin": ["file:///Users/you/path/to/opencode-extended-cache/dist/index.js"]
 }
 ```
