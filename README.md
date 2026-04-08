@@ -34,29 +34,24 @@ An OpenCode plugin that sets `promptCacheRetention: "24h"` through `chat.params`
 
 This plugin is not published to npm.
 
-Build it locally:
+Option A (recommended): download `index.ts` from GitHub with `gh`.
 
 ```bash
-git clone git@github.com:OverHash/opencode-extended-cache.git
-cd opencode-extended-cache
-npm install
-npm run build
-```
-
-Option A (recommended): install via global plugin directory.
-
-```bash
-cp dist/index.js ~/.config/opencode/plugins/opencode-extended-cache.js
-cp dist/index.js.map ~/.config/opencode/plugins/opencode-extended-cache.js.map
+mkdir -p ~/.config/opencode/plugins
+gh api "repos/OverHash/opencode-extended-cache/contents/index.ts?ref=main" --jq '.content' \
+  | python3 -c 'import sys,base64;sys.stdout.write(base64.b64decode(sys.stdin.read()).decode())' \
+  > ~/.config/opencode/plugins/opencode-extended-cache.ts
 ```
 
 Restart OpenCode. No config change is required for this option.
 
-Option B: load it from a file path in `opencode.json`.
+Option B: clone the repo and load it by file path in `opencode.json`.
 
 ```jsonc
 // ~/.config/opencode/opencode.json
 {
-  "plugin": ["file:///Users/you/path/to/opencode-extended-cache/dist/index.js"]
+  "plugin": ["file:///Users/you/path/to/opencode-extended-cache/index.ts"]
 }
 ```
+
+Option C: build and copy `dist/index.js` if you prefer compiled output.
