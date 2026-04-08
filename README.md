@@ -1,22 +1,33 @@
-# opencodex-fast
+# opencode-extended-cache
 
-An OpenCode plugin that adds `"service_tier": "priority"` to Codex requests when `/fast` is enabled globally.
+An OpenCode plugin that sets `promptCacheRetention: "24h"` through `chat.params` when `/extended-prompt-cache` is enabled globally.
 
 ## What it does
 
-- Adds a `/fast` command to OpenCode
-- When enabled, injects `service_tier: "priority"` into requests sent to `https://chatgpt.com/backend-api/codex/responses`
-- Mirrors Codex Fast mode, which is documented as 1.5x faster at 2x credit cost
+- Adds a `/extended-prompt-cache` command to OpenCode
+- When enabled, sets `promptCacheRetention: "24h"` in model params
+- Applies only to supported OpenAI models:
+  - `gpt-5.4`
+  - `gpt-5.2`
+  - `gp5-5.1-codex-max`
+  - `gpt-5.1-codex-max`
+  - `gpt-5.1`
+  - `gpt-5.1-codex`
+  - `gpt-5.1-codex-mini`
+  - `gpt-5.1-chat-latest`
+  - `gpt-5`
+  - `gpt-5-codex`
+  - `gpt-4.1`
 - Leaves all non-Codex requests untouched
-- Persists a single global `enabled` flag in `~/.config/opencode/opencodex-fast.jsonc`
+- Persists a single global `enabled` flag in `~/.config/opencode/opencode-extended-cache.jsonc`
 
 ## Commands
 
 ```text
-/fast           Toggle fast mode globally
-/fast on        Enable fast mode
-/fast off       Disable fast mode
-/fast status    Show current global fast-mode state
+/extended-prompt-cache           Toggle extended prompt cache globally
+/extended-prompt-cache on        Enable extended prompt cache
+/extended-prompt-cache off       Disable extended prompt cache
+/extended-prompt-cache status    Show current extended prompt cache state
 ```
 
 ## Installation
@@ -26,6 +37,6 @@ Add to your OpenCode config:
 ```jsonc
 // opencode.jsonc
 {
-  "plugin": ["opencodex-fast@latest"],
+  "plugin": ["opencode-extended-cache@latest"],
 }
 ```
